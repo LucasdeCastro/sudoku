@@ -6,7 +6,7 @@ type ErrorPlay = { row: number; column: number; value: number };
 export const useErrors = (): [
   ErrorPlay[],
   number,
-  (board: SudokuBoard, row: number, column: number, value: number) => void
+  (board: SudokuBoard, row: number, column: number, value: number) => boolean
 ] => {
   const [numberOfErrors, setErrorsQuantity] = useState<number>(0);
   const [errors, setErrors] = useState<ErrorPlay[]>([]);
@@ -21,7 +21,9 @@ export const useErrors = (): [
       if (value !== board[row][column]) {
         setErrorsQuantity((value) => value + 1);
         setErrors((errors) => (errors || []).concat({ row, column, value }));
+        return true;
       }
+      return false;
     },
     [errors]
   );

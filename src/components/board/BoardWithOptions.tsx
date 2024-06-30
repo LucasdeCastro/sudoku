@@ -37,9 +37,10 @@ export const BoardWithOptions = ({
   const handleSetNumber = (row: number, column: number, value: number) => {
     if (!board || !puzzle) return;
 
-    syncErrors(board, row, column, value);
-    onUpdatePuzzle(row, column, value);
-    setSelected({ row, column, value });
+    if (!syncErrors(board, row, column, value)) {
+      onUpdatePuzzle(row, column, value);
+      setSelected({ row, column, value });
+    }
   };
 
   const handlePlay = (value: number) => {

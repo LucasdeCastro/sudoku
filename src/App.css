@@ -1,47 +1,19 @@
-.full-screen {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  /* align-items: center; */
-  /* justify-content: center; */
-}
-
-.main-section {
+.select-label {
   display: flex;
   flex-direction: column;
+  color: #fff;
+  font-weight: bold;
+  gap: 5px;
+}
+
+.select {
+  cursor: pointer;
+}
+
+.controls select {
   padding: 10px;
-  gap: 10px;
-}
-
-.controls {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-}
-
-.header h1 {
-  flex: 1;
-  color: var(--color-white);
-  text-align: center;
-  font-size: 2rem;
-}
-
-.button {
-  padding: 12px;
-  border: 0;
   font-size: 1rem;
-  background-color: var(--color-blue);
-  border-radius: 4px;
-  color: var(--color-white);
-}
-
-.button:hover {
-  filter: brightness(1.5);
+  min-width: 200px;
 }
 
 .numbers {
@@ -61,6 +33,7 @@
   color: var(--color-secondary);
   font-weight: bold;
   line-height: 20px;
+  cursor: pointer;
 }
 
 .numbers button span {
@@ -73,11 +46,19 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .full-screen {
+    min-height: 100vh;
+    background-color: var(--color-primary);
+    align-items: normal;
+    flex: 1;
+  }
+
   .main-section {
     width: 100%;
   }
 
-  .button {
+  .button,
+  .select-label {
     width: 80%;
   }
 

@@ -6,10 +6,11 @@ import {
 } from "./sudoku";
 
 describe("sudoku", () => {
-  it("createSudokuBoard", () => {
-    console.log({
-      board: createSudokuBoard(),
-    });
+  it("createSudokuBoard", async () => {
+    const board = await createSudokuBoard();
+
+    expect(board.length).toBe(9);
+    expect(board[0].length).toBe(9);
   });
 
   it("getRandomList", () => {
@@ -57,13 +58,13 @@ describe("sudoku", () => {
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
     ];
 
-    // valid[0][0] = 0;
-    // expect(isValidSudokuBoard(valid, 0, 0, 5)).toBe(true);
+    valid[0][0] = 0;
+    expect(isValidSudokuBoard(valid, 0, 0, 5)).toBe(true);
 
-    // valid[0][0] = 5;
-    // expect(isValidSudokuBoard(valid, 0, 0, 5)).toBe(false);
+    valid[0][0] = 5;
+    expect(isValidSudokuBoard(valid, 0, 0, 5)).toBe(false);
 
-    valid[0][4] = 0;
-    expect(isValidSudokuBoard(invalid, 0, 0, 1)).toBe(true);
+    invalid[0][4] = 0;
+    expect(isValidSudokuBoard(invalid, 0, 0, 1)).toBe(false);
   });
 });

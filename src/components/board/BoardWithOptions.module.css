@@ -1,0 +1,9 @@
+.board {}
+
+.header {
+	display: flex;
+	color: var(--color-white);
+	justify-content: space-between;
+	font-weight: 500;
+	letter-spacing: 1px;
+}

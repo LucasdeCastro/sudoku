@@ -16,11 +16,12 @@ export const Board = ({ board, onClick, selected, errors }: BoardProps) => {
   return (
     <div className={styles.board}>
       {board.map((row, rowIndex) => {
+        const rowSelected = selected && selected.row === rowIndex;
         return (
           <div
-            key={`row-${rowIndex}`}
+            key={`row-${rowIndex}-${rowSelected}`}
             className={classNames(styles.row, {
-              selected: selected && selected.row === rowIndex,
+              [styles.selected]: rowSelected,
             })}
           >
             {row.map((value, columnIndex) => {
@@ -32,10 +33,12 @@ export const Board = ({ board, onClick, selected, errors }: BoardProps) => {
                 (error) =>
                   error.row === rowIndex && error.column === columnIndex
               );
+
               const fullSelected =
                 selected &&
                 selected.column === columnIndex &&
                 selected.row === rowIndex;
+
               const number = error?.value || (value > 0 ? value : "");
 
               return (

@@ -15,12 +15,12 @@ export function Home() {
 
   const handleClick = async (difficulty: GameDifficulty) => {
     createNewPuzzle(difficulty).then(() => {
-      navigate("/puzzle");
+      navigate("/sudoku/puzzle");
     });
   };
 
   const handleOnContinue = () => {
-    navigate("/puzzle");
+    navigate("/sudoku/puzzle");
   };
 
   return (

@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/puzzle",
+    path: "/sudoku/puzzle",
     element: <Puzzle />,
   },
 ]);

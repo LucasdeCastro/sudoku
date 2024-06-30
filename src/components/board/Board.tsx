@@ -34,7 +34,7 @@ export const Board = ({ board, onClick, selected, errors }: BoardProps) => {
                   error.row === rowIndex && error.column === columnIndex
               );
 
-              const fullSelected =
+              const focused =
                 selected &&
                 selected.column === columnIndex &&
                 selected.row === rowIndex;
@@ -58,7 +58,7 @@ export const Board = ({ board, onClick, selected, errors }: BoardProps) => {
                     className={classNames(styles.item, {
                       [styles.selected]:
                         selected && value !== 0 && selected.value === value,
-                      [styles.fullSelected]: fullSelected,
+                      [styles.focused]: focused,
                       [styles.error]: !!error,
                     })}
                   >

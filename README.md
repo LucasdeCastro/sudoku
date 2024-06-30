@@ -4,4 +4,4 @@ This is my version of the Sudoku game. I was motivated to create it because all 
 
 #### Link:
 
-(https://lucasdecastro.github.io/sudoku/)[https://lucasdecastro.github.io/sudoku/]
+(lucasdecastro.github.io/sudoku)[https://lucasdecastro.github.io/sudoku/]

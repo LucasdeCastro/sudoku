@@ -1,0 +1,28 @@
+.options {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	margin-top: 20px;
+}
+
+.options button {
+	border: 0;
+	font-size: 1.6rem;
+	padding: 8px;
+	border-radius: 2px;
+	background-color: var(--color-blue);
+	color: var(--color-secondary);
+	font-weight: bold;
+	line-height: 20px;
+	cursor: pointer;
+}
+
+.options button span {
+	font-size: 1rem;
+	color: #444;
+}
+
+.options button:active {
+	filter: brightness(0.5);
+}

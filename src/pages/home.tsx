@@ -12,11 +12,13 @@ export function Home() {
     score: state.score,
   }));
   const createNewPuzzle = useSudokuStore((state) => state.createNewPuzzle);
+
   const handleClick = async (difficulty: GameDifficulty) => {
     createNewPuzzle(difficulty).then(() => {
       navigate("/puzzle");
     });
   };
+
   const handleOnContinue = () => {
     navigate("/puzzle");
   };

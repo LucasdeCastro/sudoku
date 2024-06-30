@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import "../App.css";
 import BoardWithOptions from "../components/board/BoardWithOptions";
 import { Header } from "../components/header/Header";
 import { useSudokuStore } from "../useSudokuStore";

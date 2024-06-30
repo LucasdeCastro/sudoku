@@ -1,3 +1,5 @@
+import styles from "./Options.module.css";
+
 type MissingPiece = { value: number; quantity: number };
 
 export const Options = ({
@@ -8,7 +10,7 @@ export const Options = ({
   onClick: (value: number) => void;
 }) => {
   return (
-    <section className="numbers">
+    <section className={styles.options}>
       {missingPieces.length &&
         missingPieces.map((piece) => (
           <button

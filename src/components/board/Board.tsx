@@ -34,10 +34,14 @@ export const Board = ({ board, onClick, selected, errors }: BoardProps) => {
                   error.row === rowIndex && error.column === columnIndex
               );
 
+              const inSelection =
+                selected && value !== 0 && selected.value === value;
+
               const focused =
-                selected &&
-                selected.column === columnIndex &&
-                selected.row === rowIndex;
+                (selected &&
+                  selected.column === columnIndex &&
+                  selected.row === rowIndex) ||
+                inSelection;
 
               const number = error?.value || (value > 0 ? value : "");
 
@@ -56,8 +60,7 @@ export const Board = ({ board, onClick, selected, errors }: BoardProps) => {
                   <button
                     onClick={() => onClick(rowIndex, columnIndex, value)}
                     className={classNames(styles.item, {
-                      [styles.selected]:
-                        selected && value !== 0 && selected.value === value,
+                      [styles.selected]: inSelection,
                       [styles.focused]: focused,
                       [styles.error]: !!error,
                     })}

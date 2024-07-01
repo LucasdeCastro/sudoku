@@ -1,4 +1,7 @@
-.board {}
+.level {
+	text-transform: uppercase;
+	font-weight: bold;
+}
 
 .header {
 	display: flex;

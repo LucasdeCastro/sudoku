@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SudokuBoard } from "../../game/sudoku";
+import { GameDifficulty, SudokuBoard } from "../../game/sudoku";
 import { Options } from "./Options";
 import { Board } from "./Board";
 import { useErrors } from "./useErrors";
@@ -17,12 +17,14 @@ export const BoardWithOptions = ({
   board,
   puzzle,
   start,
+  difficulty,
   onUpdatePuzzle,
   onVictory,
 }: {
   board: SudokuBoard;
   puzzle: SudokuBoard;
   start: number | null;
+  difficulty: GameDifficulty | null;
   onVictory: (numberOfErrors: number) => void;
   onUpdatePuzzle: (row: number, column: number, value: number) => void;
 }) => {
@@ -58,11 +60,12 @@ export const BoardWithOptions = ({
     <>
       <section className={styles.header}>
         <span>Errors: {numberOfErrors}</span>
+        <span className={styles.level}>Level: {difficulty}</span>
         <span>
           Time: <Timer start={start || 0} />
         </span>
       </section>
-      <section className={styles.board}>
+      <section>
         {puzzle && (
           <Board
             errors={errors}

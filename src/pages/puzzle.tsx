@@ -18,7 +18,7 @@ export function Puzzle() {
     navigate("/");
   };
 
-  const { board, puzzle } = currentGame;
+  const { board, puzzle, difficulty } = currentGame;
   const showBoard = board && puzzle;
 
   return (
@@ -29,6 +29,7 @@ export function Puzzle() {
           <BoardWithOptions
             board={board}
             puzzle={puzzle}
+            difficulty={difficulty}
             start={currentGame.startDate}
             onUpdatePuzzle={updatePuzzleValue}
             onVictory={handleVictory}

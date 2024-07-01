@@ -1,3 +1,5 @@
+import classNames from "classnames";
+import { formatMinutes } from "../../helpers";
 import { Score } from "../../useSudokuStore";
 import styles from "./ScoreTable.module.css";
 
@@ -19,11 +21,20 @@ export const ScoreTable = ({ score }: { score: Score }) => {
         </thead>
         <tbody className={styles.body}>
           {values.map(([difficulty, value]) => {
-            const interval = (value?.endDate || 0) - (value?.startDate || 0);
+            const hasDates = value?.startDate && value.endDate;
             return (
-              <tr key={difficulty}>
+              <tr
+                className={classNames({
+                  [styles.latest]: difficulty === "latest",
+                })}
+                key={difficulty}
+              >
                 <th scope="row">{difficulty}</th>
-                <td>{interval || "-"}</td>
+                <td>
+                  {hasDates
+                    ? formatMinutes(value?.startDate, value?.endDate)
+                    : "-"}
+                </td>
                 <td>{value?.errors || "-"}</td>
               </tr>
             );

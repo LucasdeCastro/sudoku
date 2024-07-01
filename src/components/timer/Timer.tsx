@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { formatMinutes } from "../../helpers";
 
 export const Timer = ({ start }: { start: number }) => {
   const [interval, setTime] = useState<string>("00:00");
@@ -6,12 +7,7 @@ export const Timer = ({ start }: { start: number }) => {
   useEffect(() => {
     const updateTimer = () => {
       setTime(() => {
-        const diff = Date.now() - start;
-        const time = new Date(0, 0, 0, 0, 0, 0, diff);
-        const minutes = time.getMinutes().toString().padStart(2, "0");
-        const seconds = time.getSeconds().toString().padStart(2, "0");
-
-        return `${minutes}:${seconds}`;
+        return formatMinutes(start);
       });
     };
 

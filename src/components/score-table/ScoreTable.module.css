@@ -15,7 +15,7 @@
 }
 
 .header {
-  color: #000;
+  color: var(--color-blue);
   background-color: var(--color-secondary);
 }
 
@@ -41,6 +41,16 @@
   background-color: var(--color-primary);
 }
 
+.latest {
+  background: var(--color-secondary);
+  color: var(--color-black);
+  filter: brightness(3);
+  font-weight: bold;
+}
+
+.latest>th {
+  text-transform: uppercase;
+}
 
 @media only screen and (max-width: 600px) {
   .table {

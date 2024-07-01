@@ -17,7 +17,12 @@ export type SudokuGameState = {
 
 export type Score = Record<
   GameDifficulty | "latest",
-  { startDate: number; endDate: number; errors: number } | null
+  {
+    startDate: number;
+    endDate: number;
+    errors: number;
+    difficulty?: GameDifficulty;
+  } | null
 >;
 
 type SudokuStore = {
@@ -106,6 +111,7 @@ export const useSudokuStore = create<SudokuStore>()(
             startDate: currentGame.startDate,
             endDate: Date.now(),
             errors: numberOfErrors,
+            difficulty: currentGame.difficulty,
           };
 
           const currentScore = state.score

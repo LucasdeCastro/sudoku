@@ -49,7 +49,8 @@
 }
 
 .latest>th {
-  text-transform: uppercase;
+  font-size: 0.8rem;
+  border: 0;
 }
 
 @media only screen and (max-width: 600px) {

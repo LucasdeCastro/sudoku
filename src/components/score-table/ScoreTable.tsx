@@ -22,14 +22,18 @@ export const ScoreTable = ({ score }: { score: Score }) => {
         <tbody className={styles.body}>
           {values.map(([difficulty, value]) => {
             const hasDates = value?.startDate && value.endDate;
+            const isLatest = difficulty === "latest";
             return (
               <tr
                 className={classNames({
-                  [styles.latest]: difficulty === "latest",
+                  [styles.latest]: isLatest,
                 })}
                 key={difficulty}
               >
-                <th scope="row">{difficulty}</th>
+                <th scope="row">
+                  {difficulty}
+                  {isLatest ? ` (${value?.difficulty})` : null}
+                </th>
                 <td>
                   {hasDates
                     ? formatMinutes(value?.startDate, value?.endDate)

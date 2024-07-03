@@ -6,6 +6,7 @@ import { useErrors } from "./useErrors";
 import { useMissingPieces } from "./useMissingPieces";
 import styles from "./BoardWithOptions.module.css";
 import { Timer } from "../timer/Timer";
+import { Button } from "../button/Button";
 
 type SelectionState = {
   row: number;
@@ -50,6 +51,16 @@ export const BoardWithOptions = ({
     handleSetNumber(selected.row, selected.column, value);
   };
 
+  const handleAutoComplete = () => {
+    board.forEach((row, rowIndex) => {
+      row.forEach((value, columnIndex) => {
+        if (puzzle[rowIndex][columnIndex] === 0) {
+          onUpdatePuzzle(rowIndex, columnIndex, value);
+        }
+      });
+    });
+  };
+
   useEffect(() => {
     if (missingPieces.length === 0) {
       onVictory(numberOfErrors);
@@ -65,7 +76,7 @@ export const BoardWithOptions = ({
           Time: <Timer start={start || 0} />
         </span>
       </section>
-      <section>
+      <section className={styles.boardSection}>
         {puzzle && (
           <Board
             errors={errors}
@@ -75,8 +86,14 @@ export const BoardWithOptions = ({
           />
         )}
       </section>
-
       <Options missingPieces={missingPieces} onClick={handlePlay} />
+      {missingPieces.length <= 2 ? (
+        <section className={styles.autoCompleteSection}>
+          <Button theme="secondary" onClick={handleAutoComplete}>
+            Auto Complete
+          </Button>
+        </section>
+      ) : null}
     </>
   );
 };

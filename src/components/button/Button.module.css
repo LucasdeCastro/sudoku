@@ -1,0 +1,32 @@
+.button {
+	padding: 12px;
+	border: 0;
+	font-size: 1rem;
+	background-color: var(--color-light-green);
+	border-radius: 4px;
+	cursor: pointer;
+	color: var(--color-secondary);
+	font-weight: bold;
+	min-width: 200px;
+}
+
+.button:active {
+	color: var(--color-light-green);
+	background-color: var(--color-secondary);
+}
+
+.secondary {
+	color: var(--color-light-green);
+	background-color: var(--color-secondary);
+}
+
+.secondary:active {
+	color: var(--color-secondary);
+	background-color: var(--color-light-green);
+}
+
+@media only screen and (max-width: 600px) {
+	.button {
+		width: 80%;
+	}
+}

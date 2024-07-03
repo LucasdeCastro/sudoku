@@ -3,7 +3,8 @@
   --color-secondary: #232D3F;
   --color-black: #000;
   --color-white: #F5F5F5;
-  --color-blue: #83B4FF;
+  --color-light-green: #008170;
+  --color-green: #005B41;
 }
 
 html,
@@ -18,7 +19,8 @@ body,
   height: 100%;
   width: 100%;
   padding: 0px;
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
+  /* overflow: hidden; */
 }
 
 .full-screen {
@@ -27,7 +29,8 @@ body,
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-primary);
+  background-color: var(--color-black);
+  /* overflow: hidden; */
 }
 
 .main-section {
@@ -37,15 +40,17 @@ body,
   gap: 10px;
 }
 
+.full-width {
+  width: auto;
+}
+
 @media only screen and (max-width: 600px) {
   .full-screen {
-    min-height: 100vh;
-    background-color: var(--color-primary);
-    align-items: normal;
+    background-color: var(--color-black);
     flex: 1;
   }
 
-  .main-section {
+  .full-width {
     width: 100%;
   }
 }

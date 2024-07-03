@@ -9,4 +9,17 @@
 	justify-content: space-between;
 	font-weight: 500;
 	letter-spacing: 1px;
+	padding: 0px 10px;
+}
+
+.boardSection {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.autoCompleteSection {
+	display: flex;
+	justify-content: center;
+	margin-top: 15px;
 }

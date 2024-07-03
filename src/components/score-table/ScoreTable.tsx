@@ -5,9 +5,6 @@ import styles from "./ScoreTable.module.css";
 
 export const ScoreTable = ({ score }: { score: Score }) => {
   const values = Object.entries(score);
-  const hasValues = values.some(([_, value]) => value && value.startDate);
-
-  if (!hasValues) return null;
 
   return (
     <section className={styles.section}>
@@ -32,7 +29,9 @@ export const ScoreTable = ({ score }: { score: Score }) => {
               >
                 <th scope="row">
                   {difficulty}
-                  {isLatest ? ` (${value?.difficulty})` : null}
+                  {isLatest && value?.difficulty
+                    ? ` (${value?.difficulty})`
+                    : null}
                 </th>
                 <td>
                   {hasDates

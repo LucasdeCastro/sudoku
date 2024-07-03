@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { GameDifficulty } from "../../game/sudoku";
+import { Button } from "../button/Button";
 import styles from "./Controls.module.css";
 import { DifficultySelect } from "./DifficultySelect";
-import classNames from "classnames";
 
 export const Controls = ({
   onContinue,
@@ -22,17 +22,12 @@ export const Controls = ({
         setDifficulty={(level: GameDifficulty) => setDifficulty(level)}
       />
 
-      <button className={styles.button} onClick={handleNewGame}>
-        New Game
-      </button>
+      <Button onClick={handleNewGame}>New Game</Button>
 
       {onContinue && (
-        <button
-          className={classNames(styles.button, styles.secondary)}
-          onClick={onContinue}
-        >
+        <Button theme="secondary" onClick={onContinue}>
           Continue
-        </button>
+        </Button>
       )}
     </section>
   );

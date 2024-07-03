@@ -25,7 +25,7 @@ export function Home() {
 
   return (
     <div className="full-screen">
-      <section className="main-section">
+      <section className="main-section full-width">
         <Header title="Sudoku" />
         <ScoreTable score={score} />
         <Controls

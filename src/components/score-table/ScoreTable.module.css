@@ -15,7 +15,7 @@
 }
 
 .header {
-  color: var(--color-blue);
+  color: var(--color-light-green);
   background-color: var(--color-secondary);
 }
 
@@ -42,7 +42,7 @@
 }
 
 .latest {
-  background: var(--color-secondary);
+  background: var(--color-green);
   color: var(--color-black);
   filter: brightness(3);
   font-weight: bold;

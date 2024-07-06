@@ -19,7 +19,7 @@ export const Board = ({ board, onClick, selected, errors }: BoardProps) => {
         const rowSelected = selected && selected.row === rowIndex;
         return (
           <div
-            key={`row-${rowIndex}-${rowSelected}`}
+            key={`row-${rowIndex}`}
             className={classNames(styles.row, {
               [styles.selected]: rowSelected,
             })}
@@ -47,7 +47,7 @@ export const Board = ({ board, onClick, selected, errors }: BoardProps) => {
 
               return (
                 <div
-                  key={`column-${columnIndex}`}
+                  key={`column-${columnIndex}-${value}`}
                   data-row={rowIndex}
                   data-column={columnIndex}
                   data-block={block}

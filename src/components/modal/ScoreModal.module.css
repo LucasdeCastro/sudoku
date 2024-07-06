@@ -1,0 +1,14 @@
+.content {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+.content table {
+	border: 2px solid var(--color-secondary);
+}
+
+.content table td,
+.content table th {
+	border: 1px solid var(--color-secondary);
+
+}

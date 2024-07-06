@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { GameDifficulty, SudokuBoard } from "../../game/sudoku";
-import { Options } from "./Options";
+import { Button } from "../button/Button";
+import { Timer } from "../timer/Timer";
 import { Board } from "./Board";
+import styles from "./BoardWithOptions.module.css";
+import { Options } from "./Options";
 import { useErrors } from "./useErrors";
 import { useMissingPieces } from "./useMissingPieces";
-import styles from "./BoardWithOptions.module.css";
-import { Timer } from "../timer/Timer";
-import { Button } from "../button/Button";
 
 type SelectionState = {
   row: number;
@@ -21,12 +21,14 @@ export const BoardWithOptions = ({
   difficulty,
   onUpdatePuzzle,
   onVictory,
+  onFail,
 }: {
   board: SudokuBoard;
   puzzle: SudokuBoard;
   start: number | null;
   difficulty: GameDifficulty | null;
   onVictory: (numberOfErrors: number) => void;
+  onFail: (numberOfErrors: number) => void;
   onUpdatePuzzle: (row: number, column: number, value: number) => void;
 }) => {
   const [errors, numberOfErrors, syncErrors] = useErrors();
@@ -67,10 +69,16 @@ export const BoardWithOptions = ({
     }
   }, [missingPieces, numberOfErrors, onVictory]);
 
+  useEffect(() => {
+    if (numberOfErrors >= 3) {
+      onFail(numberOfErrors);
+    }
+  }, [numberOfErrors, onFail]);
+
   return (
     <>
       <section className={styles.header}>
-        <span>Errors: {numberOfErrors}</span>
+        <span>Errors: {numberOfErrors}/3</span>
         <span className={styles.level}>Level: {difficulty}</span>
         <span>
           Time: <Timer start={start || 0} />

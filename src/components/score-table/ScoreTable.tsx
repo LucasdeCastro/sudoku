@@ -3,14 +3,24 @@ import { formatMinutes } from "../../helpers";
 import { Score } from "../../useSudokuStore";
 import styles from "./ScoreTable.module.css";
 
-export const ScoreTable = ({ score }: { score: Score }) => {
-  const values = Object.entries(score);
+export const ScoreTable = ({
+  score,
+  full = true,
+  theme = "light",
+}: {
+  score: Score;
+  full?: boolean;
+  theme?: "light" | "error";
+}) => {
+  const values = Object.entries(score).filter(
+    ([_, value]) => full || value !== null
+  );
 
   return (
     <section className={styles.section}>
       <table className={styles.table}>
         <thead className={styles.header}>
-          <tr>
+          <tr className={styles.row}>
             <th>Difficulty</th>
             <th>Time</th>
             <th>Errors</th>
@@ -22,7 +32,7 @@ export const ScoreTable = ({ score }: { score: Score }) => {
             const isLatest = difficulty === "latest";
             return (
               <tr
-                className={classNames({
+                className={classNames(styles.row, styles[theme], {
                   [styles.latest]: isLatest,
                 })}
                 key={difficulty}

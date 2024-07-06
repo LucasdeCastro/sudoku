@@ -5,6 +5,7 @@
   --color-white: #F5F5F5;
   --color-light-green: #008170;
   --color-green: #005B41;
+  --color-red: #E47373;
 }
 
 html,
@@ -38,6 +39,7 @@ body,
   flex-direction: column;
   padding: 10px;
   gap: 10px;
+  margin-top: -30px;
 }
 
 .full-width {

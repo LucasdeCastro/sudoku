@@ -21,7 +21,6 @@ body,
   width: 100%;
   padding: 0px;
   background-color: var(--color-black);
-  /* overflow: hidden; */
 }
 
 .full-screen {
@@ -31,7 +30,6 @@ body,
   justify-content: center;
   align-items: center;
   background-color: var(--color-black);
-  /* overflow: hidden; */
 }
 
 .main-section {
@@ -48,7 +46,6 @@ body,
 
 @media only screen and (max-width: 600px) {
   .full-screen {
-    background-color: var(--color-black);
     flex: 1;
   }
 

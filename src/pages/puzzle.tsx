@@ -22,16 +22,18 @@ export function Puzzle() {
   const handleVictory = (errors: number) => {
     setErrors(errors);
     setVictory(true);
+    finishGame(errors || 0, true);
   };
 
   const handleFail = (errors: number) => {
     setErrors(errors);
     setVictory(false);
+    finishGame(errors || 0, false);
   };
 
   const handleOnClose = () => {
     navigate("/");
-    finishGame(errors || 0);
+    finishGame(errors || 0, false);
   };
 
   const { board, puzzle, difficulty } = currentGame;

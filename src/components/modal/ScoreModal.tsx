@@ -22,19 +22,23 @@ export const ScoreModal = ({
       <div className={styles.content}>
         <h2>{title}</h2>
 
-        <ScoreTable
-          theme="error"
-          full={false}
-          score={{
-            easy: null,
-            medium: null,
-            hard: null,
-            expert: null,
-            latest: score.latest,
-          }}
-        />
+        {score.latest && (
+          <ScoreTable
+            theme="error"
+            full={false}
+            score={{
+              easy: null,
+              medium: null,
+              hard: null,
+              expert: null,
+              latest: score.latest,
+            }}
+          />
+        )}
 
-        <Button onClick={() => onClose()}>Close</Button>
+        <Button className={styles.button} onClick={() => onClose()}>
+          Close
+        </Button>
       </div>
     </Modal>
   );

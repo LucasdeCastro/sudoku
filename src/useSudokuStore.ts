@@ -30,7 +30,7 @@ type SudokuStore = {
   score: Score;
   createNewPuzzle: (difficulty: GameDifficulty) => Promise<void>;
   updatePuzzleValue: (row: number, column: number, value: number) => void;
-  finishGame: (numberOfErrors: number) => void;
+  finishGame: (numberOfErrors: number, victory: boolean) => void;
 };
 
 export const useSudokuStore = create<SudokuStore>()(
@@ -91,7 +91,7 @@ export const useSudokuStore = create<SudokuStore>()(
         });
       },
 
-      finishGame: (numberOfErrors: number) => {
+      finishGame: (numberOfErrors: number, victory: boolean) => {
         set((state) => {
           const newState = { ...state } as SudokuStore;
           const currentGame = state.currentGame;
@@ -118,18 +118,21 @@ export const useSudokuStore = create<SudokuStore>()(
             ? state.score[currentGame.difficulty]
             : null;
 
-          if (currentScore) {
-            const currentRecord = currentScore.endDate - currentScore.startDate;
-            const interval = latest.endDate - latest.startDate;
+          if (victory) {
+            if (currentScore) {
+              const currentRecord =
+                currentScore.endDate - currentScore.startDate;
+              const interval = latest.endDate - latest.startDate;
 
-            if (interval <= currentRecord) {
+              if (interval <= currentRecord) {
+                newState.score[currentGame.difficulty] = latest;
+              }
+            } else {
               newState.score[currentGame.difficulty] = latest;
             }
-          } else {
-            newState.score[currentGame.difficulty] = latest;
+            newState.score["latest"] = latest;
           }
 
-          newState.score["latest"] = latest;
           newState.currentGame = {
             difficulty: null,
             board: null,
